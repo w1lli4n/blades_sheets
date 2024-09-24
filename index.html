@@ -18,8 +18,65 @@
             </div>
         </div>
         <div id="create" class="container create">
-            <h1>Create</h1>
+            <h1>Character Creation</h1>
+            <!-- Char Info -->
+            <div id="modal-open-info" class="modal-create">
+                <h1>Character Information</h1>
+            </div>
+            <dialog id="modal-dialog-info">
+                <h1>Character Information</h1>
+                <form>
+                    <label for="info-character-name">Character name:</label>
+                    <input type="text" id="info-character-name" />
+
+                    <div class="modal-buttons">
+                        <button
+                            class="modal-cancel-button"
+                            value="cancel"
+                            formmethod="dialog"
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            class="modal-confirm-button"
+                            id="modal-confirm-info"
+                            value="default"
+                        >
+                            Confirm
+                        </button>
+                    </div>
+                </form>
+            </dialog>
+
+            <!-- Char Skills-->
+            <div id="modal-open-skills" class="modal-create">
+                <h1>Character Skills</h1>
+            </div>
+            <dialog id="modal-dialog-skills">
+                <h1>Character Skills</h1>
+                <form>
+                    <div class="modal-buttons">
+                        <button
+                            class="modal-cancel-button"
+                            value="cancel"
+                            formmethod="dialog"
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            class="modal-confirm-button"
+                            id="modal-confirm-skills"
+                            value="default"
+                        >
+                            Confirm
+                        </button>
+                    </div>
+                </form>
+            </dialog>
+
+            <output></output>
         </div>
+        <script src="scripts/modal.js"></script>
         <div id="import" class="container import">
             <h1>Import</h1>
         </div>
