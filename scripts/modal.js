@@ -1,29 +1,58 @@
-let modals = ["info", "skills"];
+const modals = document.querySelectorAll("dialog.modal");
 
-modals.forEach((section) => {
-  let button_open = document.getElementById("modal-open-" + section);
-  let modal = document.getElementById("modal-dialog-" + section);
+modals.forEach((modal) => {
+  const form = modal.querySelector(".modal-dialog-form");
 
-  button_open.addEventListener("click", () => {
+  // Use data attributes to link buttons to modals dynamically
+  const buttonOpen = document.querySelector(`[data-open="${modal.id}"]`);
+  const buttonConfirm = modal.querySelector(".modal-confirm-button");
+  const buttonClear = modal.querySelector(".modal-clear-button");
+
+  openDialog(buttonOpen, modal);
+  closeDialog(modal);
+  clearDialog(buttonClear, form);
+  formHandle(buttonConfirm, modal, form);
+});
+
+function openDialog(button, modal) {
+  button.addEventListener("click", () => {
     modal.showModal();
+    modal.querySelector("input, select, textarea").focus();
   });
-});
+}
 
-modals.forEach((section) => {
-  let modal = document.getElementById("modal-dialog-" + section);
-  let confirm_button = document.getElementById("modal-confirm-" + section);
-  let input = document.getElementById("info-character-name");
-
+function closeDialog(modal) {
   modal.addEventListener("close", (e) => {
-    let output =
-      modal.returnValue === "default"
-        ? "No return"
-        : `Return value: ${modal.returnValue}.`;
-    console.log(output);
+    console.log(modal.returnValue);
+  });
+}
+
+function clearDialog(button, form) {
+  button.addEventListener("click", () => {
+    form.reset();
+  });
+}
+
+function formHandle(button, modal, form) {
+  button.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity(); // Native browser validation feedback
+      return;
+    }
+
+    const formData = new FormData(form);
+    const json = feedFormData(formData);
+    modal.close(JSON.stringify(json));
+  });
+}
+
+function feedFormData(formData) {
+  const json = {};
+  formData.forEach((value, key) => {
+    json[key] = value;
   });
 
-  confirm_button.addEventListener("click", (e) => {
-    e.preventDefault();
-    modal.close(input.value);
-  });
-});
+  return json;
+}

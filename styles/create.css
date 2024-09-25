@@ -1,19 +1,6 @@
+@import "modal.css";
+
 .create {
     background-color: blue;
     justify-content: flex-start;
-}
-
-.modal-create {
-    cursor: pointer;
-
-    width: 90%;
-
-    border: 2px solid black;
-    border-radius: 5px;
-    margin: 32px 0;
-    padding: 0.25rem;
-
-    background-color: orange;
-
-    text-align: center;
 }

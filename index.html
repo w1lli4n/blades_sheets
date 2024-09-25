@@ -20,14 +20,75 @@
         <div id="create" class="container create">
             <h1>Character Creation</h1>
             <!-- Char Info -->
-            <div id="modal-open-info" class="modal-create">
+            <div data-open="modal-dialog-info" class="modal-create">
                 <h1>Character Information</h1>
             </div>
-            <dialog id="modal-dialog-info">
+            <dialog id="modal-dialog-info" class="modal">
                 <h1>Character Information</h1>
-                <form>
-                    <label for="info-character-name">Character name:</label>
-                    <input type="text" id="info-character-name" />
+                <form class="modal-dialog-form">
+                    <div class="modal-dialog-inputs">
+                        <label for="name">Character name:</label>
+                        <input type="text" id="name" name="name" />
+                    </div>
+
+                    <div class="modal-dialog-inputs">
+                        <label for="alias">Character alias:</label>
+                        <input type="text" id="alias" name="alias" />
+                    </div>
+
+                    <div class="modal-dialog-inputs">
+                        <label for="look">Character look:</label>
+                        <input type="text" id="look" name="look" />
+                    </div>
+
+                    <div class="modal-dialog-inputs">
+                        <label for="heritage">
+                            Character heritage:
+                            <select name="heritage" id="heritage">
+                                <option value="default">Choose...</option>
+                                <option value="akoros">Akoros</option>
+                                <option value="the-dagger-isles">
+                                    The Dagger Isles
+                                </option>
+                                <option value="iruvian">Iruvian</option>
+                                <option value="severos">Severos</option>
+                                <option value="skovlan">Skovlan</option>
+                                <option value="tycheros">Tycheros</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="modal-dialog-inputs">
+                        <label for="background">
+                            Character background:
+                            <select name="background" id="background">
+                                <option value="default">Choose...</option>
+                                <option value="academic">Academic</option>
+                                <option value="labor">Labor</option>
+                                <option value="law">Law</option>
+                                <option value="trade">Trade</option>
+                                <option value="military">Military</option>
+                                <option value="noble">Noble</option>
+                                <option value="underworld">Underworld</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="modal-dialog-inputs">
+                        <label for="vice">
+                            Character vice:
+                            <select name="vice" id="vice">
+                                <option value="default">Choose...</option>
+                                <option value="faith">Faith</option>
+                                <option value="gambling">Gambling</option>
+                                <option value="luxury">Luxury</option>
+                                <option value="obligation">Obligation</option>
+                                <option value="pleasure">Pleasure</option>
+                                <option value="stupor">Stupor</option>
+                                <option value="weird<">Weird</option>
+                            </select>
+                        </label>
+                    </div>
 
                     <div class="modal-buttons">
                         <button
@@ -36,6 +97,14 @@
                             formmethod="dialog"
                         >
                             Cancel
+                        </button>
+                        <button
+                            class="modal-clear-button"
+                            id="modal-clear-info"
+                            value="clear"
+                            type="button"
+                        >
+                            Clear all
                         </button>
                         <button
                             class="modal-confirm-button"
@@ -49,10 +118,10 @@
             </dialog>
 
             <!-- Char Skills-->
-            <div id="modal-open-skills" class="modal-create">
+            <div data-open="modal-dialog-skills" class="modal-create">
                 <h1>Character Skills</h1>
             </div>
-            <dialog id="modal-dialog-skills">
+            <dialog id="modal-dialog-skills" class="modal">
                 <h1>Character Skills</h1>
                 <form>
                     <div class="modal-buttons">
@@ -64,8 +133,16 @@
                             Cancel
                         </button>
                         <button
+                            class="modal-clear-button"
+                            id="modal-clear-info"
+                            value="clear"
+                            type="button"
+                        >
+                            Clear all
+                        </button>
+                        <button
                             class="modal-confirm-button"
-                            id="modal-confirm-skills"
+                            id="modal-confirm-info"
                             value="default"
                         >
                             Confirm
@@ -73,8 +150,6 @@
                     </div>
                 </form>
             </dialog>
-
-            <output></output>
         </div>
         <script src="scripts/modal.js"></script>
         <div id="import" class="container import">
